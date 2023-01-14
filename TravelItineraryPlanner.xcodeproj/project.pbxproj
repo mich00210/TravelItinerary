@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32193FD52972EC2000BB6FBB /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32193FD42972EC2000BB6FBB /* CardView.swift */; };
 		327369F2294B1AA900EE03A2 /* JourneysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327369F1294B1AA900EE03A2 /* JourneysView.swift */; };
 		327369F4294C144F00EE03A2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327369F3294C144F00EE03A2 /* MainView.swift */; };
 		32765542294310E9003B314E /* TravelItineraryPlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32765541294310E9003B314E /* TravelItineraryPlannerApp.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		32193FD42972EC2000BB6FBB /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		327369F1294B1AA900EE03A2 /* JourneysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneysView.swift; sourceTree = "<group>"; };
 		327369F3294C144F00EE03A2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		3276553E294310E9003B314E /* TravelItineraryPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelItineraryPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +96,7 @@
 				3276556E2943148D003B314E /* DailyView.swift */,
 				327369F1294B1AA900EE03A2 /* JourneysView.swift */,
 				327369F3294C144F00EE03A2 /* MainView.swift */,
+				32193FD42972EC2000BB6FBB /* CardView.swift */,
 			);
 			path = JourneyView;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				32765544294310E9003B314E /* ContentView.swift in Sources */,
 				3276556D2943143C003B314E /* MapView.swift in Sources */,
 				327369F4294C144F00EE03A2 /* MainView.swift in Sources */,
+				32193FD52972EC2000BB6FBB /* CardView.swift in Sources */,
 				32765542294310E9003B314E /* TravelItineraryPlannerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

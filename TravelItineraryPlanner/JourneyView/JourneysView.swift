@@ -31,24 +31,7 @@ struct JourneysView: View {
                 
                 Spacer()
             }
-            HStack {
-                Text("Your journeys")
-                    .bold()
-                    .foregroundColor(.black.opacity(0.6))
-                    .font(.title)
-                Spacer()
-                Button(action: {}) {
-                    ZStack {
-                        RoundedRectangle(cornerSize: .init(width: 10, height: 10))
-                            .frame(width: 80, height: 32)
-                            .foregroundColor(secondaryColor)
-                        Text("+ Add")
-                            .bold()
-                            .foregroundColor(titleColor)
-                    }
-                }
-            }
-            .padding(.horizontal, 40)
+            
             
             if(!showDailyView){
                 MainView(showDailyView: $showDailyView)

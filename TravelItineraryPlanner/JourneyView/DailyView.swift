@@ -12,7 +12,7 @@ struct DailyView: View {
     let showDailyView: Binding<Bool>
     @State var showDatePicker: Bool = false
     
-    var events: [Event] = [.init(title: "Airport", description: "Description", time: .now), .init(title: "Hotel", description: "description", color: .blue, time: .now)]
+    @State var events: [Event] = [.init(title: "Airport", description: "Description", time: .now), .init(title: "Hotel", description: "description", color: .blue, time: .now)]
     
     struct Event {
         let id = UUID()
@@ -22,11 +22,23 @@ struct DailyView: View {
         var time: Date
         
     }
+    
+    func addEvent() {
+        events.append(.init(title: "default", description: "desc", time: .now))
+    }
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(CalendarViewModel().dayMonth(dateHolder.date))
-                .foregroundColor(titleColor)
-                .font(.title).bold()
+        VStack(alignment: .leading, spacing: 0) {
+            VStack {
+                Text(CalendarViewModel().dayMonth(dateHolder.date))
+                    .bold()
+                    .foregroundColor(.black.opacity(0.6))
+                    .font(.title)
+                Text("Japan 1")
+                    .bold()
+                    .foregroundColor(titleColor)
+                    .font(.largeTitle)
+            }
+            .padding(.horizontal, 40)
             
             // show week
             // get array of days
@@ -36,49 +48,74 @@ struct DailyView: View {
             
             ScrollView() {
                 VStack(alignment: .leading, spacing: -15) {
+                    
+                    // TODO: Refactor
+                    // Have the timeline on the outside because zIndex only works within a container
                     ForEach(events, id: \.id) { event in
                         EventView(startTime: event.time, title: event.title, description: event.description, color: event.color)
+                            
                     }
                     
-//                    EventView(startTime: Date(), title: "Hotel", description: "description", color: .cyan)
                 }
+                
                 
             }
             .padding()
+            Spacer()
+            HStack {
+                Spacer()
+                Button(action: {addEvent()} ) {
+                    Circle()
+                        .frame(width: 80)
+                        .foregroundColor(titleColor)
+                        .padding()
+                        .overlay {
+                            Image(systemName: "pencil" )
+                                .font(.title)
+                                .foregroundColor(.white)
+                                .bold()
+                        }
+                }
+                
+            }
             
         }
     }
+    
 }
 
-func EventView(startTime: Date, title: String, description: String, color: Color) -> some View {
-    HStack(alignment: .top) {
-        Text(startTime.formatted(.dateTime.hour().minute()))
-            .bold()
-            .foregroundColor(titleColor)
-            .padding(.horizontal, 10)
-            .padding(.vertical, 3)
-            .background(
-                Rectangle()
-                    .fill(secondaryColor)
-                    .cornerRadius(15))
-        VStack(spacing: -10) {
-            Circle()
-                .fill(.red)
-                .frame(width: 15)
-                .zIndex(10)
-            Capsule()
-                .fill(color)
-                .frame(width: 15, height: 150)
+struct EventView:  View {
+    
+    let startTime: Date
+    let title: String
+    let description: String
+    let color: Color
+    
+    var body: some View {
+        HStack(alignment: .top) {
+            Text(startTime.formatted(.dateTime.hour().minute()))
+                .bold()
+                .foregroundColor(titleColor)
+                .padding(.horizontal, 10)
+                .padding(.vertical, 3)
+                .background(
+                    Rectangle()
+                        .fill(secondaryColor)
+                        .cornerRadius(15))
+            VStack(spacing: -10) {
+                Circle()
+                    .fill(.red)
+                    .frame(width: 15)
+                Capsule()
+                    .fill(color)
+                    .frame(width: 15, height: 150)
+            }
+            
+            CardView(title: title, description: description)
+            
+            Spacer()
         }
         
-        VStack(alignment: .leading) {
-            Text(title)
-                .bold()
-                .font(.title3)
-            Text(description)
-                .foregroundColor(.gray)
-        }
-        Spacer()
     }
 }
 
